@@ -2,9 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://chrisxn.com/test/test/</loc>
+    <loc>https://chrisxn.com/Uncategorized/hello-world/</loc>
     
-    <lastmod>2024-11-26</lastmod>
+    <lastmod>2024-12-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://chrisxn.com/Notes/ECO101-Notes/</loc>
+    
+    <lastmod>2024-12-17</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -37,19 +46,10 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://chrisxn.com/uncategorized/hello-world/</loc>
-    
-    <lastmod>2024-11-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>https://chrisxn.com/</loc>
-    <lastmod>2024-12-13</lastmod>
+    <lastmod>2024-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -58,8 +58,15 @@
 
   
   <url>
-    <loc>https://chrisxn.com/categories/test/</loc>
-    <lastmod>2024-12-13</lastmod>
+    <loc>https://chrisxn.com/categories/Notes/</loc>
+    <lastmod>2024-12-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://chrisxn.com/categories/Uncategorized/</loc>
+    <lastmod>2024-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
