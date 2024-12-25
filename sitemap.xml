@@ -4,16 +4,16 @@
   <url>
     <loc>https://chrisxn.com/Uncategorized/hello-world/</loc>
     
-    <lastmod>2024-12-23</lastmod>
+    <lastmod>2024-12-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://chrisxn.com/Notes/Eco101-Notes/</loc>
+    <loc>https://chrisxn.com/Notes/ECO101-Notes/</loc>
     
-    <lastmod>2024-12-23</lastmod>
+    <lastmod>2024-12-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -40,14 +40,14 @@
 
   
   <url>
-    <loc>https://chrisxn.com/categories/Notes/</loc>
+    <loc>https://chrisxn.com/categories/Uncategorized/</loc>
     <lastmod>2024-12-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://chrisxn.com/categories/Uncategorized/</loc>
+    <loc>https://chrisxn.com/categories/Notes/</loc>
     <lastmod>2024-12-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
