@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://chrisxn.com/about/index.html</loc>
+    
+    <lastmod>2025-01-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://chrisxn.com/Articles/Language-and-Dialect/</loc>
     
     <lastmod>2024-12-30</lastmod>
@@ -23,15 +32,6 @@
     <loc>https://chrisxn.com/Notes/Eco101-Notes/</loc>
     
     <lastmod>2024-12-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://chrisxn.com/about/index.html</loc>
-    
-    <lastmod>2024-12-20</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
