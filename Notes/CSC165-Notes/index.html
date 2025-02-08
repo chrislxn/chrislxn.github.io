@@ -19,24 +19,32 @@
   <meta name="author" content="Chris Xuning Li">
   <meta name="keywords" content="Xuning Li, 李叙宁, Chris Xuning Li, Chris Li">
   
-    <meta name="description" content="Chris Xuning Li">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Archives">
-<meta property="og:url" content="https://chrisxn.com/archives/2024/index.html">
+    <meta name="description" content="Lecture Notes for CSC165 Winter 2025, University of Toronto, St.George Campus">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSC165 Lecture Notes">
+<meta property="og:url" content="https://chrisxn.com/Notes/CSC165-Notes/index.html">
 <meta property="og:site_name" content="Chris Xuning Li">
-<meta property="og:description" content="Chris Xuning Li">
+<meta property="og:description" content="Lecture Notes for CSC165 Winter 2025, University of Toronto, St.George Campus">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-02-08T02:47:06.000Z">
+<meta property="article:modified_time" content="2025-02-08T03:04:52.181Z">
 <meta property="article:author" content="Chris Xuning Li">
 <meta property="article:tag" content="Xuning Li, 李叙宁, Chris Xuning Li, Chris Li">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Archives - Chris Xuning Li</title>
+  <title>CSC165 Lecture Notes - Chris Xuning Li</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -90,7 +98,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -184,9 +192,49 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Archives"></span>
+            <span id="subtitle" data-typed-text="CSC165 Lecture Notes"></span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-02-07 21:47" pubdate>
+          February 7, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          45 words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          1 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
 
         
       </div>
@@ -202,46 +250,181 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">4 posts in total</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2024</p>
-    
-    <a href="/Notes/Eco101-Notes/" class="list-group-item list-group-item-action">
-      <time>12-17</time>
-      <div class="list-group-item-title">ECO101-Notes</div>
-    </a>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">CSC165 Lecture Notes</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Introduction-and-Disclaimer"><a href="#Introduction-and-Disclaimer" class="headerlink" title="Introduction and Disclaimer"></a>Introduction and Disclaimer</h1><p>This note is based on CSC165: Mathematical Expression and Reasoning for Computer Science (Winter 2025), University of Toronto, St.George Campus. Taught by Professor <em>Francois Pitt</em></p>
+<p>Related document: <a target="_blank" rel="noopener" href="https://www.cs.toronto.edu/~david/course-notes/csc165.pdf">Lecture Notes for CSC165 (Version 0.5) by David Liu</a><br>Since the syllabus of CSC165 have been changed since Winter 2024 semester, the information quoted above is of limited reference value. That’s why I’m posting this note.</p>
+<p>Please note that the content of this post is my own personal compilation of the lecture and is not affiliated with the University of Toronto or anyone else. Limited by my knowledge and skills, there may be inaccuracies and omissions. Please do not use this LECTURE NOTE as your sole source of information. I do not guarantee the accuracy or completeness of the contents of this document.</p>
+<p>This note may contain portions derived from lecture materials copyrighted by Professor <em>Francois Pitt</em>, University of Toronto. For concerns regarding intellectual property rights, please contact me at <a href="mailto:&#104;&#x69;&#x40;&#x63;&#104;&#114;&#105;&#115;&#x78;&#x6e;&#46;&#x63;&#111;&#109;">&#104;&#x69;&#x40;&#x63;&#104;&#114;&#105;&#115;&#x78;&#x6e;&#46;&#x63;&#111;&#109;</a>.</p>
+<p>This note is shared <strong>for personal study and non-commercial purposes only</strong>. Any user who republishes, redistributes, or modifies this content must also follow the same conditions. Users are fully responsible for any potential legal risks associated with their actions.</p>
+<h1 id="Under-Construction"><a href="#Under-Construction" class="headerlink" title="Under Construction"></a>Under Construction</h1>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
   
     
-    <a href="/Articles/Language-and-Dialect/" class="list-group-item list-group-item-action">
-      <time>12-01</time>
-      <div class="list-group-item-title">Difference between Language and Dialect</div>
-    </a>
+      <span class="category-chain">
+        
+  <a href="/categories/Notes/" class="category-chain-item">Notes</a>
   
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>CSC165 Lecture Notes</div>
+      <div>https://chrisxn.com/Notes/CSC165-Notes/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Chris Xuning Li</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>February 7, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/Notes/Eco101-Notes/" title="ECO101-Notes">
+                        <span class="hidden-mobile">ECO101-Notes</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
 </div>
 
 
 
 
 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
     
@@ -334,6 +517,99 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 
