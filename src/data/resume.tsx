@@ -5,37 +5,46 @@ import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Nodejs } from "@/components/ui/svgs/nodejs";
 import { Python } from "@/components/ui/svgs/python";
-import { Golang } from "@/components/ui/svgs/golang";
+import { Nginx } from "@/components/ui/svgs/nginx";
+import { WordPress } from "@/components/ui/svgs/wordpress";
 import { Postgresql } from "@/components/ui/svgs/postgresql";
 import { Docker } from "@/components/ui/svgs/docker";
-import { Kubernetes } from "@/components/ui/svgs/kubernetes";
-import { Astro } from "@/components/ui/svgs/astro";
+import { Linux } from "@/components/ui/svgs/linux";
+import { Cloudflare } from "@/components/ui/svgs/cloudflare";
+import { Tailscale } from "@/components/ui/svgs/tailscale";
+import { VPN } from "@/components/ui/svgs/vpn";
 
 export const DATA = {
-  name: "Alex Mercer - Software Engineer",
-  initials: "AM",
-  url: "https://alexmercer.dev",
-  location: "Austin, TX",
-  locationLink: "https://www.google.com/maps/place/austin+tx",
+  name: "Chris Xuning Li",
+  initials: "LXN",
+  url: "https://chrisxn.com",
+  location: "Toronto, ON",
+  locationLink: "https://maps.app.goo.gl/rGPDkrT454KtL6La9",
   description:
-    "Full-stack engineer turned indie founder. I love building developer tools, fast UIs, and products people actually use.",
+    "I'm Chris Xuning Li, A third-year student at the University of Toronto. Double majoring in Computer Science and Statistics.",
   summary:
-    "In early 2023, I left a senior engineering role to go all-in on building my own SaaS products. Before that, [I completed a double degree in computer science and business](/#education), [interned at companies like Stripe and Cloudflare](/#work), and [competed in 18+ hackathons](/#hackathons). I also spent a summer in San Francisco as part of a founder residency focused on shipping fast and finding early customers.",
-  avatarUrl: "/picofme.png",
+     `In September 2024, I moved from Shanghai to Toronto and began my studies at the University of Toronto, where I am pursuing a Double Major in Statistics and Computer Science. My interests lie primarily in computer systems, network infrastructure, self-hosting, and homelab technologies.
+
+I enjoy designing, deploying, and maintaining systems that integrate software, hardware, networking, and cloud services. Over the years, I have worked extensively with Linux, Docker, WordPress, Cloudflare, virtualization technologies, and various self-hosted platforms.
+Í
+Beyond traditional software development, I am particularly interested in systems thinking: understanding how complex systems operate, how information and resources flow through them, and how technology can be used to solve real-world problems. Recently, I have also been exploring AI-assisted workflows, automation, and the growing intersection between artificial intelligence and system design.
+
+Outside of academics, I am an enthusiastic technology hobbyist who enjoys building personal infrastructure, experimenting with emerging technologies, and continuously learning about the systems that power the modern digital world.`,
+  avatarUrl: "https://content.chrisxn.com/2026/d151d49f32df40fbbfead796e1ec885d",
   ogImage: "/og_image.png",
   sections: {
     about: { order: 1, enabled: true, heading: "About" },
-    work: { order: 2, enabled: true, heading: "Work Experience", presentLabel: "Present" },
+    work: { order: 2, enabled: false, heading: "Work Experience", presentLabel: "Present" },
     education: { order: 3, enabled: true, heading: "Education" },
     skills: { order: 4, enabled: true, heading: "Skills" },
     projects: {
-      order: 5, enabled: true,
+      order: 5, enabled: false,
       label: "My Projects",
       heading: "Check out my latest work",
       text: "I've worked on a variety of projects, from simple websites to complex web applications. Here are a few of my favorites.",
     },
     hackathons: {
-      order: 7, enabled: true,
+      order: 7, enabled: false,
       label: "Hackathons",
       heading: "I like building things",
       text: "During my time in university, I attended {count}+ hackathons. People from around the country would come together and build incredible things in 2-3 days. It was eye-opening to see the endless possibilities brought to life by a group of motivated and passionate individuals.",
@@ -48,7 +57,7 @@ export const DATA = {
       order: 8, enabled: true,
       label: "Contact",
       heading: "Get in Touch",
-      text: "Want to chat? Just shoot me a dm with a direct question on twitter and I'll respond whenever I can. I will ignore all soliciting.",
+      text: "Want to chat? Email me at [hi@chrisxn.com](mailto:hi@chrisxn.com)",
     },
   },
   photos: [
@@ -63,16 +72,20 @@ export const DATA = {
     { src: "/photos/photo9.jpg", alt: "Photo 9" },
   ],
   skills: [
-    { name: "Astro", icon: Astro },
+    { name: "Docker", icon: Docker },
+    { name: "Cloudflare", icon: Cloudflare },
+    { name: "VPN", icon: VPN },
+    { name: "Linux", icon: Linux },
+    { name: "Tailscale", icon: Tailscale },
+    { name: "Nginx", icon: Nginx },
     { name: "React", icon: ReactLight },
+    { name: "WordPress", icon: WordPress },
     { name: "Next.js", icon: NextjsIconDark },
     { name: "Typescript", icon: Typescript },
     { name: "Node.js", icon: Nodejs },
     { name: "Python", icon: Python },
-    { name: "Go", icon: Golang },
     { name: "Postgres", icon: Postgresql },
-    { name: "Docker", icon: Docker },
-    { name: "Kubernetes", icon: Kubernetes },
+
   ],
   navbar: [
     { href: "/", icon: House, label: "Home" },
@@ -84,13 +97,13 @@ export const DATA = {
     social: {
       GitHub: {
         name: "GitHub",
-        url: "https://github.com",
+        url: "https://github.com/chrislxn",
         icon: Icons.github,
         navbar: true,
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://linkedin.com",
+        url: "https://linkedin.com/in/xuningli",
         icon: Icons.linkedin,
         navbar: true,
       },
@@ -98,19 +111,19 @@ export const DATA = {
         name: "X",
         url: "https://x.com",
         icon: Icons.x,
-        navbar: true,
+        navbar: false,
       },
       Youtube: {
         name: "Youtube",
         url: "https://youtube.com",
         icon: Icons.youtube,
-        navbar: true,
+        navbar: false,
       },
       email: {
         name: "Send Email",
-        url: "mailto:alex@alexmercer.dev",
+        url: "mailto:hi@chrisxn.com",
         icon: Icons.email,
-        navbar: false,
+        navbar: true,
       },
     },
   },
@@ -191,36 +204,28 @@ export const DATA = {
   ],
   education: [
     {
-      school: "Founder Fellowship SF",
-      href: "https://foundersfellowship.io",
-      degree: "Cohort 4 - Founder in Residence",
-      logoUrl: "https://avatar.vercel.sh/founder-fellowship?size=40",
-      start: "2023",
-      end: "2023",
+      school: "Department of Computer Science, University of Toronto",
+      href: "https://web.cs.toronto.edu",
+      degree: "Computer Science - Major",
+      logoUrl: "https://content.chrisxn.com/2026/e8fd5dde67c95f7cb0b2202edae4e27e",
+      start: "2026",
+      end: "Present",
     },
     {
-      school: "University of British Columbia",
-      href: "https://ubc.ca",
-      degree: "Bachelor of Science, Computer Science",
-      logoUrl: "https://www.google.com/s2/favicons?domain=ubc.ca&sz=128",
-      start: "2018",
-      end: "2023",
+      school: "Department of Statistical Science, University of Toronto",
+      href: "https://www.statistics.utoronto.ca",
+      degree: "Statistics - Major",
+      logoUrl: "https://content.chrisxn.com/2026/e8fd5dde67c95f7cb0b2202edae4e27e",
+      start: "2025",
+      end: "Present",
     },
     {
-      school: "Simon Fraser University",
-      href: "https://sfu.ca",
-      degree: "Bachelor of Business Administration",
-      logoUrl: "https://www.google.com/s2/favicons?domain=sfu.ca&sz=128",
-      start: "2018",
-      end: "2023",
-    },
-    {
-      school: "International Baccalaureate",
-      href: "https://ibo.org",
-      degree: "IB Diploma",
-      logoUrl: "https://www.google.com/s2/favicons?domain=ibo.org&sz=128",
-      start: "2014",
-      end: "2018",
+      school: "GCE Advanced Level",
+      href: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-advanced/cambridge-international-as-and-a-levels/",
+      degree: "A-Level — Further Mathematics, Mathematics, Physics, Computer Science",
+      logoUrl: "https://www.google.com/s2/favicons?domain=cambridgeinternational.org&sz=128",
+      start: "2021",
+      end: "2024",
     },
   ],
   projects: [
