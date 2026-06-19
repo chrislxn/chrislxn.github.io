@@ -50,7 +50,7 @@ Outside of academics, I am an enthusiastic technology hobbyist who enjoys buildi
       text: "During my time in university, I attended {count}+ hackathons. People from around the country would come together and build incredible things in 2-3 days. It was eye-opening to see the endless possibilities brought to life by a group of motivated and passionate individuals.",
     },
     photos: {
-      order: 6, enabled: true,
+      order: 6, enabled: false,
       heading: "My Recent Travels",
     },
     contact: {
