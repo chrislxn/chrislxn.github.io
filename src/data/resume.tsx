@@ -26,7 +26,7 @@ export const DATA = {
      `In September 2024, I moved from Shanghai to Toronto and began my studies at the University of Toronto, where I am pursuing a Double Major in Statistics and Computer Science. My interests lie primarily in computer systems, network infrastructure, self-hosting, and homelab technologies.
 
 I enjoy designing, deploying, and maintaining systems that integrate software, hardware, networking, and cloud services. Over the years, I have worked extensively with Linux, Docker, WordPress, Cloudflare, virtualization technologies, and various self-hosted platforms.
-Í
+
 Beyond traditional software development, I am particularly interested in systems thinking: understanding how complex systems operate, how information and resources flow through them, and how technology can be used to solve real-world problems. Recently, I have also been exploring AI-assisted workflows, automation, and the growing intersection between artificial intelligence and system design.
 
 Outside of academics, I am an enthusiastic technology hobbyist who enjoys building personal infrastructure, experimenting with emerging technologies, and continuously learning about the systems that power the modern digital world.`,
