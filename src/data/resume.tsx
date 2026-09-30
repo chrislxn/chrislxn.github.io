@@ -92,8 +92,8 @@ Outside of academics, I am an enthusiastic technology hobbyist who enjoys buildi
     { href: "/blog", icon: Library, label: "Blog" },
   ],
   contact: {
-    email: "alex@alexmercer.dev",
-    tel: "+1 512 000 0000",
+    email: "hi@chrisxn.com",
+    tel: "",
     social: {
       GitHub: {
         name: "GitHub",
