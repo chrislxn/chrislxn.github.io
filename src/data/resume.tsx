@@ -21,7 +21,7 @@ export const DATA = {
   location: "Toronto, ON",
   locationLink: "https://maps.app.goo.gl/rGPDkrT454KtL6La9",
   description:
-    "I'm Chris Xuning Li, A third-year student at the University of Toronto. Double majoring in Computer Science and Statistics.",
+    "I'm Chris Xuning Li (Chinese: 李叙宁), a third-year student at the University of Toronto, double majoring in Computer Science and Statistics.",
   summary:
      `In September 2024, I moved from Shanghai to Toronto and began my studies at the University of Toronto, where I am pursuing a Double Major in Statistics and Computer Science. My interests lie primarily in computer systems, network infrastructure, self-hosting, and homelab technologies.
 
