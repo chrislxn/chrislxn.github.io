@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { Languages } from "lucide-react";
 import { DATA } from "@/data/resume";
 import { CONFIG } from "@/data/config";
 import { absoluteURL, getProfile, homePath, blogPath, type Locale } from "@/data/profile";
@@ -42,6 +43,10 @@ const ogLocale = locale === "zh" ? "zh_CN" : "en_US";
 const robots = noindex ? "noindex, follow" : CONFIG.seo.robots;
 const languages = Object.entries(alternates) as [Locale, string][];
 const nav = locale === "zh" ? { home: "首页", blog: "文章", language: "语言" } : { home: "Home", blog: "Blog", language: "Language" };
+
+const targetLocale: Locale = locale === "zh" ? "en" : "zh";
+const languageSwitchLabel = locale === "zh" ? "切换为英文" : "Switch to Simplified Chinese";
+const languageSwitchTitle = locale === "zh" ? "当前：简体中文 · Switch to English" : "Current: English · 切换为简体中文";
 
 const { light, dark, radius } = CONFIG.theme;
 const { baseFontSize } = CONFIG.typography;
@@ -177,10 +182,16 @@ const { baseFontSize } = CONFIG.typography;
     <div class="relative z-10 max-w-2xl mx-auto py-12 pb-24 sm:py-24 px-6">
       <nav aria-label={nav.language} class="mb-10 flex flex-wrap items-center justify-between gap-4 text-sm">
         <div class="flex gap-4"><a href={homePath(locale)} class="hover:underline">{nav.home}</a><a href={blogPath(locale)} class="hover:underline">{nav.blog}</a></div>
-        <div class="flex gap-3">
-          <a href={alternates.en || "/"} lang="en" hreflang="en" data-language="en" aria-current={locale === "en" ? "true" : undefined} class:list={["hover:underline", { "font-semibold underline underline-offset-4": locale === "en" }]}>English</a>
-          <a href={alternates.zh || "/zh/"} lang="zh-Hans" hreflang="zh-Hans" data-language="zh" aria-current={locale === "zh" ? "true" : undefined} class:list={["hover:underline", { "font-semibold underline underline-offset-4": locale === "zh" }]}>简体中文</a>
-        </div>
+        <a
+          href={alternates[targetLocale] || homePath(targetLocale)}
+          hreflang={targetLocale === "zh" ? "zh-Hans" : "en"}
+          data-language={targetLocale}
+          aria-label={languageSwitchLabel}
+          title={languageSwitchTitle}
+          class="inline-flex size-10 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          <Languages className="size-5" aria-hidden="true" />
+        </a>
       </nav>
       <slot />
       <footer class="mt-14 border-t border-border pt-6 text-xs text-muted-foreground flex flex-wrap gap-4">

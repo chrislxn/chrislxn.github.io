@@ -17,7 +17,13 @@
 - 本轮没有百度、Bing 或其他站长账号的验证信息，因此没有代为完成所有权验证或提交。不要将站长 API token 放进客户端或公开仓库。
 - 从中国大陆多个城市、运营商和移动网络测试 DNS、TLS、首字节、完整 HTML、头像资源和字体；记录时间、节点、状态码及加载耗时。境外 HTTP 200、本地构建通过和 robots 允许抓取，均不能证明大陆可达。
 - 当前部署仍为 Vercel。根据大陆实测结果再决定是否增加适合目标访问区域的托管或分发方式。自定义域名本身不能证明已解决网络问题。任何镜像或迁移需先规划唯一 canonical 和重定向。
-- 首页教育经历使用文本链接，避免依赖 Google favicon 服务。字体随站点构建，中文优先使用系统字体；头像仍依赖 `content.chrisxn.com`，需单独检测该域名。
+- 首页教育经历的原有 logo 随站点保存在 `public/logos/`，避免访问时依赖 Google favicon 服务。字体随站点构建，中文优先使用系统字体；头像仍依赖 `content.chrisxn.com`，需单独检测该域名。
+
+## 姓名与身份一致性
+
+主姓名使用「李叙宁 / Chris Xuning Li」，其他姓名写法 Xuning Li、Chris Xuning、Chris Li 和账号 chrislxn 在中英文可见介绍中自然说明。`src/data/resume.tsx` 的 `chineseName`、`nameVariants` 与 `username` 为这些信息的统一来源，Person 的 `alternateName`、JSON 和 llms.txt 都从同一份资料生成；中英文 Markdown 使用相同介绍。
+
+学校、St. George 校区、专业以及 GitHub/LinkedIn 链接提供同名人物的区分信息。姓名别名帮助表明内容指向同一个人，不保证任何关键词的收录或排名。
 
 ## AI 资料
 

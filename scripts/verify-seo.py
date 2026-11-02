@@ -3,6 +3,7 @@ from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlparse
 import json
+import re
 import xml.etree.ElementTree as ET
 
 root = Path('.vercel/output/static')
@@ -26,7 +27,10 @@ for path, (lang, text) in pages.items():
     assert canonical == 'https://www.chrisxn.com' + path, canonical
     alternates = {a['hreflang']: a['href'] for a in page.find('link', rel='alternate') if 'hreflang' in a}
     assert alternates == {'en': 'https://www.chrisxn.com/', 'zh-Hans': 'https://www.chrisxn.com/zh/', 'x-default': 'https://www.chrisxn.com/'}
-    assert {a['data-language'] for a in page.find('a') if 'data-language' in a} == {'en', 'zh'}
+    switch = [a for a in page.find('a') if 'data-language' in a]
+    assert len(switch) == 1
+    assert switch[0]['data-language'] == ('zh' if lang == 'en' else 'en')
+    assert switch[0].get('aria-label') and switch[0].get('title')
     for a in page.find('a') + page.find('link'):
         url = a.get('href', '')
         if url.startswith('/') and not url.startswith('//'):
@@ -63,4 +67,20 @@ for locale, md in [('en', 'index.md'), ('zh', 'zh/index.md')]:
     assert 'Meridian' not in text and 'Stripe' not in text and 'Alex Mercer' not in text
 for text in [(root / 'llms.txt').read_text(), json.dumps(profile)]:
     assert 'Alex Mercer' not in text and 'Meridian Labs' not in text
+expected_aliases = {"李叙宁", "Xuning Li", "Chris Xuning", "Chris Li", "chrislxn"}
+for path in pages:
+    html = output(path).read_text()
+    visible = re.sub(r'<(script|style)\b.*?</\1>', '', html, flags=re.S)
+    visible = re.sub(r'<[^>]+>', ' ', visible)
+    assert all(name in visible for name in expected_aliases), f'Missing visible identity: {path}'
+    schemas = [json.loads(text) for text in re.findall(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', html, re.S)]
+    person = next(node for schema in schemas for node in schema.get('@graph', []) if node.get('@type') == 'Person')
+    assert set(person['alternateName']) == expected_aliases
+    assert person['name'] == 'Chris Xuning Li'
+    assert person['@id'] == profile['id']
+    assert person['sameAs'] == list(profile['profiles']['en']['links'].values())
+for p in profile['profiles'].values():
+    assert set(p['alternateNames']) == expected_aliases
+for path in ['index.md', 'zh/index.md', 'llms.txt']:
+    assert all(name in (root / path).read_text() for name in expected_aliases), path
 print(f'SEO verification passed: {len(urls)} indexable URLs, bilingual HTML/Markdown/JSON, sample noindex, valid sitemap and internal links.')

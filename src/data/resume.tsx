@@ -16,12 +16,15 @@ import { VPN } from "@/components/ui/svgs/vpn";
 
 export const DATA = {
   name: "Chris Xuning Li",
+  chineseName: "李叙宁",
+  nameVariants: ["Xuning Li", "Chris Xuning", "Chris Li"],
+  username: "chrislxn",
   initials: "LXN",
   url: "https://www.chrisxn.com",
   location: "Toronto, ON",
   locationLink: "https://maps.app.goo.gl/rGPDkrT454KtL6La9",
   description:
-    "I'm Chris Xuning Li (Chinese: 李叙宁), a third-year student at the University of Toronto, double majoring in Computer Science and Statistics.",
+    "I'm Chris Xuning Li (Chris Li; Chinese: 李叙宁), a third-year Computer Science and Statistics student at the University of Toronto, St. George campus.",
   summary:
      `In September 2024, I moved from Shanghai to Toronto and began my studies at the University of Toronto, where I am pursuing a Double Major in Statistics and Computer Science. My interests lie primarily in computer systems, network infrastructure, self-hosting, and homelab technologies.
 
@@ -204,18 +207,18 @@ Outside of academics, I am an enthusiastic technology hobbyist who enjoys buildi
   ],
   education: [
     {
-      school: "Department of Computer Science, University of Toronto",
+      school: "Department of Computer Science, University of Toronto, St. George campus",
       href: "https://web.cs.toronto.edu",
       degree: "Computer Science - Major",
-      logoUrl: "https://content.chrisxn.com/2026/e8fd5dde67c95f7cb0b2202edae4e27e",
+      logoUrl: "/logos/university-of-toronto.svg",
       start: "2026",
       end: "Present",
     },
     {
-      school: "Department of Statistical Science, University of Toronto",
+      school: "Department of Statistical Science, University of Toronto, St. George campus",
       href: "https://www.statistics.utoronto.ca",
       degree: "Statistics - Major",
-      logoUrl: "https://content.chrisxn.com/2026/e8fd5dde67c95f7cb0b2202edae4e27e",
+      logoUrl: "/logos/university-of-toronto.svg",
       start: "2025",
       end: "Present",
     },
@@ -223,7 +226,7 @@ Outside of academics, I am an enthusiastic technology hobbyist who enjoys buildi
       school: "GCE Advanced Level",
       href: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-advanced/cambridge-international-as-and-a-levels/",
       degree: "A-Level — Further Mathematics, Mathematics, Physics, Computer Science",
-      logoUrl: "https://www.google.com/s2/favicons?domain=cambridgeinternational.org&sz=128",
+      logoUrl: "/logos/cambridge.png",
       start: "2021",
       end: "2024",
     },
