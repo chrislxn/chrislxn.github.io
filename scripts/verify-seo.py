@@ -72,7 +72,10 @@ for path in pages:
     html = output(path).read_text()
     visible = re.sub(r'<(script|style)\b.*?</\1>', '', html, flags=re.S)
     visible = re.sub(r'<[^>]+>', ' ', visible)
-    assert all(name in visible for name in expected_aliases), f'Missing visible identity: {path}'
+    assert 'Chris Li' not in visible and 'chrislxn' not in visible, f'Name variants leaked into visible copy: {path}'
+    assert 'I also go by' not in visible and '这些姓名写法' not in visible
+    meta_description = Page(output(path)).find('meta', name='description')[0]['content']
+    assert 'Chris Li' in meta_description
     schemas = [json.loads(text) for text in re.findall(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', html, re.S)]
     person = next(node for schema in schemas for node in schema.get('@graph', []) if node.get('@type') == 'Person')
     assert set(person['alternateName']) == expected_aliases
