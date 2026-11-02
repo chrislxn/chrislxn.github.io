@@ -1,10 +1,9 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import cloudflare from '@astrojs/vercel';
+import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
 import remarkGfm from 'remark-gfm';
 import rehypePrettyCode from 'rehype-pretty-code';
 import { remarkCodeMeta } from './src/lib/remark-code-meta.ts';
@@ -24,7 +23,7 @@ export default defineConfig({
   site: CONFIG.site.url,
   output: 'server',
 
-  adapter: cloudflare(),
+  adapter: vercel(),
 
   vite: {
     plugins: [tailwindcss()],
@@ -37,7 +36,6 @@ export default defineConfig({
       rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
       syntaxHighlight: false,
     }),
-    sitemap(),
   ],
 
   markdown: {

@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import { blogPath, type Locale } from "@/data/profile";
+import { postPath } from "@/lib/blog";
+interface Props { locale?: Locale; }
+const { locale = "en" } = Astro.props;
+const zh = locale === "zh";
+const published = await getCollection("blog", ({ data }) => !data.sample);
+const alternates = Object.fromEntries((["en", "zh"] as const).filter(lang => published.some(post => post.data.lang === lang)).map(lang => [lang, blogPath(lang)]));
+const posts = published.filter(post => post.data.lang === locale).sort((a, b) => b.data.publishedAt.localeCompare(a.data.publishedAt));
+---
+<Layout title={zh ? "文章" : "Blog"} description={zh ? "李叙宁关于计算机系统、网络基础设施、自托管与技术探索的文章。" : "Writing by Chris Xuning Li on computer systems, network infrastructure, self-hosting and technology."} locale={locale} alternates={alternates} noindex={posts.length === 0}>
+  <main class="flex flex-col gap-8">
+    <h1 class="text-3xl font-semibold tracking-tight">{zh ? "文章" : "Blog"}</h1>
+    {posts.length ? posts.map(post => <article class="space-y-2">
+      <h2 class="text-xl font-medium"><a href={postPath(post)} class="hover:underline">{post.data.title}</a></h2>
+      <time datetime={post.data.publishedAt} class="text-xs text-muted-foreground">{post.data.publishedAt}</time>
+      <p class="text-muted-foreground">{post.data.summary}</p>
+    </article>) : <p class="text-muted-foreground">{zh ? "文章整理中，敬请期待。" : "No articles published yet. Check back soon."}</p>}
+  </main>
+</Layout>

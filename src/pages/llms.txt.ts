@@ -1,0 +1,4 @@
+import type { APIRoute } from "astro";
+import { absoluteURL, getProfile } from "@/data/profile";
+export const prerender = true;
+export const GET: APIRoute = () => new Response(`# ${getProfile().name} · 李叙宁\n\n> Official personal website / 官方个人网站。Bilingual profile of a University of Toronto Computer Science and Statistics student.\n\n## Profile / 个人资料\n\n- [English profile](${absoluteURL("/index.md")}): Biography, education, skills and contact.\n- [中文个人资料](${absoluteURL("/zh/index.md")}): 简体中文介绍、教育经历、技能与联系方式。\n- [Structured profile](${absoluteURL("/profile.json")}): The same public profile in JSON, in both languages.\n\n## Website / 网站\n\n- [English homepage](${absoluteURL("/")})\n- [中文首页](${absoluteURL("/zh/")})\n- [Sitemap](${absoluteURL("/sitemap.xml")})\n`, { headers: { "Content-Type": "text/plain; charset=utf-8" } });

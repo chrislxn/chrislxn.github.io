@@ -1,0 +1,30 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import { DATA } from "@/data/resume";
+import { absoluteURL, blogPath, personID } from "@/data/profile";
+import { postPath, translationPaths } from "@/lib/blog";
+import { mdxComponents } from "@/mdx-components";
+interface Props { post: CollectionEntry<"blog">; posts: CollectionEntry<"blog">[]; }
+const { post, posts } = Astro.props;
+const { title, summary, image, publishedAt, updatedAt, lang, author, sample } = post.data;
+const { Content } = await render(post);
+const schema = JSON.stringify({
+  "@context": "https://schema.org", "@type": "BlogPosting", headline: title,
+  datePublished: publishedAt, dateModified: updatedAt || publishedAt,
+  description: summary, inLanguage: lang === "zh" ? "zh-Hans" : "en",
+  image: new URL(image || DATA.ogImage, DATA.url).href,
+  url: absoluteURL(postPath(post)), mainEntityOfPage: absoluteURL(postPath(post)),
+  author: { "@type": "Person", name: author || DATA.name, ...(!author || author === DATA.name ? { "@id": personID } : {}) },
+}).replace(/</g, "\\u003c");
+---
+<Layout title={title} description={summary} image={image} locale={lang} canonicalURL={absoluteURL(postPath(post))} alternates={sample ? {} : translationPaths(post, posts)} noindex={sample} ogType="article">
+  {!sample && <script is:inline type="application/ld+json" set:html={schema} />}
+  <main>
+    <a href={blogPath(lang)} class="text-sm text-muted-foreground hover:underline">← {lang === "zh" ? "返回文章列表" : "Back to Blog"}</a>
+    {sample && <p class="my-4 rounded border border-border p-3 text-sm text-muted-foreground">Template example by {author}. This is not a personal article by {DATA.name}.</p>}
+    <h1 class="mt-6 text-3xl font-semibold tracking-tight">{title}</h1>
+    <p class="my-4 text-sm text-muted-foreground"><time datetime={publishedAt}>{publishedAt}</time> · {author || DATA.name}</p>
+    <article class="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert"><Content components={mdxComponents} /></article>
+  </main>
+</Layout>
