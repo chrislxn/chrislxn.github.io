@@ -17,7 +17,7 @@ import { VPN } from "@/components/ui/svgs/vpn";
 export const DATA = {
   name: "Chris Xuning Li",
   initials: "LXN",
-  url: "https://chrisxn.com",
+  url: "https://www.chrisxn.com",
   location: "Toronto, ON",
   locationLink: "https://maps.app.goo.gl/rGPDkrT454KtL6La9",
   description:
@@ -31,7 +31,7 @@ Beyond traditional software development, I am particularly interested in systems
 
 Outside of academics, I am an enthusiastic technology hobbyist who enjoys building personal infrastructure, experimenting with emerging technologies, and continuously learning about the systems that power the modern digital world.`,
   avatarUrl: "https://content.chrisxn.com/2026/d151d49f32df40fbbfead796e1ec885d",
-  ogImage: "/og_image.png",
+  ogImage: "https://content.chrisxn.com/2026/d151d49f32df40fbbfead796e1ec885d",
   sections: {
     about: { order: 1, enabled: true, heading: "About" },
     work: { order: 2, enabled: false, heading: "Work Experience", presentLabel: "Present" },

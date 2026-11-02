@@ -1,9 +1,10 @@
 ---
 export const prerender = true;
-import Layout from "../layouts/Layout.astro";
-import HomePage from "@/components/HomePage";
+import Layout from "@/layouts/Layout.astro";
+import HomeContent from "@/components/HomeContent.astro";
+import { getProfile } from "@/data/profile";
+const profile = getProfile("en");
 ---
-
-<Layout>
-  <HomePage client:only="react" />
+<Layout absoluteTitle title="Chris Xuning Li (李叙宁) — University of Toronto" description={profile.description} locale="en" alternates={{ en: "/", zh: "/zh/" }} markdownPath="/index.md">
+  <HomeContent locale="en" />
 </Layout>

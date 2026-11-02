@@ -9,6 +9,7 @@ export function ModeToggle({ className }: { className?: string }) {
   return (
     <Button
       type="button"
+      aria-label="Toggle color theme"
       variant="link"
       size="icon"
       className={cn(className)}

@@ -1,0 +1,50 @@
+---
+import { getProfile, personSchema, absoluteURL, homePath, type Locale } from "@/data/profile";
+import { DATA } from "@/data/resume";
+interface Props { locale?: Locale; }
+const { locale = "en" } = Astro.props;
+const p = getProfile(locale);
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org", "@graph": [personSchema(locale), {
+    "@type": "ProfilePage", "@id": absoluteURL(homePath(locale)) + "#webpage",
+    url: absoluteURL(homePath(locale)), name: p.name + " · " + p.chineseName,
+    inLanguage: locale === "zh" ? "zh-Hans" : "en",
+    mainEntity: { "@id": personSchema(locale)["@id"] },
+  }],
+}).replace(/</g, "\\u003c");
+const sections = Object.entries(DATA.sections).filter(([, s]) => s.enabled).sort(([, a], [, b]) => a.order - b.order);
+---
+<script is:inline type="application/ld+json" set:html={jsonLd} />
+<main class="min-h-dvh flex flex-col gap-14 relative">
+  <section id="hero">
+    <div class="gap-6 flex flex-col md:flex-row justify-between">
+      <div class="flex flex-col gap-3 order-2 md:order-1">
+        <h1 class="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl">{p.headline}</h1>
+        <p class="text-muted-foreground max-w-[600px] md:text-lg lg:text-xl">{p.description}</p>
+      </div>
+      <img src={p.avatar} alt={p.name} width="128" height="128" fetchpriority="high" class="size-24 md:size-32 rounded-full border shadow-lg ring-4 ring-muted object-cover order-1 md:order-2" />
+    </div>
+  </section>
+  {sections.map(([key]) => <>
+    {key === "about" && <section id="about" class="flex flex-col gap-4">
+      <h2 class="text-xl font-bold">{p.labels.about}</h2>
+      <div class="space-y-4 text-muted-foreground leading-relaxed">{p.summary.split(/\n\s*\n/).map(text => <p>{text}</p>)}</div>
+    </section>}
+    {key === "education" && <section id="education" class="flex flex-col gap-6">
+      <h2 class="text-xl font-bold">{p.labels.education}</h2>
+      {p.education.map(entry => <a href={entry.href} class="flex gap-3 items-start justify-between hover:underline" target="_blank" rel="noopener noreferrer">
+        <div><h3 class="font-semibold">{entry.school}</h3><p class="text-sm text-muted-foreground">{entry.degree}</p></div>
+        <span class="text-xs text-muted-foreground shrink-0">{entry.start} – {entry.end}</span>
+      </a>)}
+    </section>}
+    {key === "skills" && <section id="skills" class="flex flex-col gap-4">
+      <h2 class="text-xl font-bold">{p.labels.skills}</h2>
+      <div class="flex flex-wrap gap-2">{DATA.skills.map(skill => <span class="border bg-background border-border rounded-xl h-8 px-4 inline-flex items-center gap-2 text-sm"><skill.icon className="size-4" />{skill.name}</span>)}</div>
+    </section>}
+    {key === "contact" && <section id="contact" class="flex flex-col gap-4">
+      <h2 class="text-xl font-bold">{p.labels.contact}</h2>
+      <p class="text-muted-foreground">{p.labels.contactText}<a class="underline underline-offset-4" href={`mailto:${p.email}`}>{p.email}</a></p>
+      <div class="flex gap-4">{Object.entries(p.links).map(([name, href]) => <a href={href} class="underline underline-offset-4" rel="me">{name}</a>)}</div>
+    </section>}
+  </>)}
+</main>

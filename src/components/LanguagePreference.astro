@@ -1,0 +1,17 @@
+<script>
+  import { chooseHomeLocale } from "@/lib/locale-preference";
+  const key = "site-language";
+  let saved: string | null = null;
+  try { saved = localStorage.getItem(key); } catch { /* Private browsing can disable storage. */ }
+  const path = window.location.pathname;
+  // Only the neutral entry URL negotiates language; shared /zh/ and article URLs stay stable.
+  if (path === "/") {
+    const locale = chooseHomeLocale(saved, navigator.languages?.length ? navigator.languages : [navigator.language]);
+    if (locale === "zh") window.location.replace("/zh/" + window.location.search + window.location.hash);
+  }
+  document.querySelectorAll<HTMLAnchorElement>("a[data-language]").forEach(link => {
+    link.addEventListener("click", () => {
+      try { localStorage.setItem(key, link.dataset.language!); } catch { /* Links still work without storage. */ }
+    });
+  });
+</script>

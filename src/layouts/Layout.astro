@@ -2,6 +2,8 @@
 import "../styles/global.css";
 import { DATA } from "@/data/resume";
 import { CONFIG } from "@/data/config";
+import { absoluteURL, getProfile, homePath, blogPath, type Locale } from "@/data/profile";
+import LanguagePreference from "@/components/LanguagePreference.astro";
 import NavbarIsland from "@/components/NavbarIsland";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 
@@ -10,30 +12,43 @@ interface Props {
   description?: string;
   image?: string;
   canonicalURL?: string;
+  locale?: Locale;
+  alternates?: Partial<Record<Locale, string>>;
+  markdownPath?: string;
+  noindex?: boolean;
+  ogType?: "website" | "article";
+  absoluteTitle?: boolean;
 }
 
 const {
   title,
-  description = DATA.description,
+  absoluteTitle = false,
+  locale = "en",
+  description = getProfile(locale).description,
   image,
-  canonicalURL = Astro.url.href,
+  canonicalURL = absoluteURL(Astro.url.pathname),
+  alternates = {},
+  markdownPath,
+  noindex = false,
+  ogType = "website",
 } = Astro.props;
 
-const pageTitle = title
+const pageTitle = absoluteTitle && title ? title : title
   ? CONFIG.seo.titleTemplate.replace("%s", title).replace("%n", DATA.name)
   : DATA.name;
-const ogImage = image
-  ? image.startsWith("http")
-    ? image
-    : `${CONFIG.site.url}${image}`
-  : `${CONFIG.site.url}${DATA.ogImage}`;
+const ogImage = new URL(image || DATA.ogImage, CONFIG.site.url).href;
+const language = locale === "zh" ? "zh-Hans" : "en";
+const ogLocale = locale === "zh" ? "zh_CN" : "en_US";
+const robots = noindex ? "noindex, follow" : CONFIG.seo.robots;
+const languages = Object.entries(alternates) as [Locale, string][];
+const nav = locale === "zh" ? { home: "首页", blog: "文章", language: "语言" } : { home: "Home", blog: "Blog", language: "Language" };
 
 const { light, dark, radius } = CONFIG.theme;
 const { baseFontSize } = CONFIG.typography;
 ---
 
 <html
-  lang={CONFIG.site.locale.split("_")[0]}
+  lang={language}
   style={`font-size: ${baseFontSize}%;`}
 >
   <head>
@@ -113,22 +128,29 @@ const { baseFontSize } = CONFIG.typography;
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    <meta name="author" content={DATA.name} />
+    {languages.map(([code, path]) => <link rel="alternate" hreflang={code === "zh" ? "zh-Hans" : "en"} href={absoluteURL(path)} />)}
+    {alternates.en && <link rel="alternate" hreflang="x-default" href={absoluteURL(alternates.en)} />}
+    {markdownPath && <link rel="alternate" type="text/markdown" href={absoluteURL(markdownPath)} />}
+    <link rel="describedby" type="text/plain" href={absoluteURL("/llms.txt")} />
 
     <!-- Robots -->
-    <meta name="robots" content={CONFIG.seo.robots} />
+    <meta name="robots" content={robots} />
     <meta
       name="googlebot"
-      content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
+      content={noindex ? "noindex, follow" : "index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"}
     />
 
     <!-- OpenGraph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={DATA.name} />
-    <meta property="og:locale" content={CONFIG.site.locale} />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={DATA.name + " · 李叙宁"} />
+    {languages.filter(([code]) => code !== locale).map(([code]) => <meta property="og:locale:alternate" content={code === "zh" ? "zh_CN" : "en_US"} />)}
 
     <!-- Twitter -->
     <meta name="twitter:card" content={CONFIG.seo.twitterCard} />
@@ -153,10 +175,22 @@ const { baseFontSize } = CONFIG.typography;
 
     <!-- Main content wrapper - matches template's z-10 container exactly -->
     <div class="relative z-10 max-w-2xl mx-auto py-12 pb-24 sm:py-24 px-6">
+      <nav aria-label={nav.language} class="mb-10 flex flex-wrap items-center justify-between gap-4 text-sm">
+        <div class="flex gap-4"><a href={homePath(locale)} class="hover:underline">{nav.home}</a><a href={blogPath(locale)} class="hover:underline">{nav.blog}</a></div>
+        <div class="flex gap-3">
+          <a href={alternates.en || "/"} lang="en" hreflang="en" data-language="en" aria-current={locale === "en" ? "true" : undefined} class:list={["hover:underline", { "font-semibold underline underline-offset-4": locale === "en" }]}>English</a>
+          <a href={alternates.zh || "/zh/"} lang="zh-Hans" hreflang="zh-Hans" data-language="zh" aria-current={locale === "zh" ? "true" : undefined} class:list={["hover:underline", { "font-semibold underline underline-offset-4": locale === "zh" }]}>简体中文</a>
+        </div>
+      </nav>
       <slot />
+      <footer class="mt-14 border-t border-border pt-6 text-xs text-muted-foreground flex flex-wrap gap-4">
+        <a href={locale === "zh" ? "/zh/index.md" : "/index.md"}>Markdown</a>
+        <a href="/profile.json">JSON</a><a href="/llms.txt">llms.txt</a><a href="/sitemap.xml">Sitemap</a>
+      </footer>
     </div>
 
     <!-- Navbar: ThemeProvider + TooltipProvider + Navbar all in one React island -->
-    <NavbarIsland client:load />
+    <NavbarIsland client:load locale={locale} />
+    <LanguagePreference />
   </body>
 </html>

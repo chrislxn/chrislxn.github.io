@@ -1,8 +1,8 @@
 {
-  "name": "starfolio",
+  "name": "chrislxn-personal-website",
   "type": "module",
-  "description": "Starfolio - Create a personal or professional portfolio site just from a single config file. Built with Astro.",
-  "author": "websiterating",
+  "description": "Bilingual personal website of Chris Xuning Li (李叙宁), built with Astro.",
+  "author": "Chris Xuning Li",
   "version": "0.0.1",
   "engines": {
     "node": ">=22.12.0"
