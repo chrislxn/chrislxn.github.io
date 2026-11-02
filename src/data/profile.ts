@@ -29,7 +29,7 @@ export function getProfile(locale: Locale = "en") {
     skills: DATA.skills.map(skill => skill.name),
     education: DATA.education.map((entry) => ({
       ...entry,
-      school: zh ? ({ "Department of Computer Science, University of Toronto": "多伦多大学计算机科学系", "Department of Statistical Science, University of Toronto": "多伦多大学统计科学系", "GCE Advanced Level": "GCE A-Level" }[entry.school] || entry.school) : entry.school,
+      school: zh ? ({ "Department of Computer Science, University of Toronto, St. George campus": "多伦多大学计算机科学系（St. George 校区）", "Department of Statistical Science, University of Toronto, St. George campus": "多伦多大学统计科学系（St. George 校区）", "GCE Advanced Level": "GCE A-Level" }[entry.school] || entry.school) : entry.school,
       degree: zh ? ({ "Computer Science - Major": "计算机科学主修", "Statistics - Major": "统计学主修", "A-Level — Further Mathematics, Mathematics, Physics, Computer Science": "A-Level：进阶数学、数学、物理、计算机科学" }[entry.degree] || entry.degree) : entry.degree,
       end: zh && entry.end === "Present" ? "至今" : entry.end,
     })),

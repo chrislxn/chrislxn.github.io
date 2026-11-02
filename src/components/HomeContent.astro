@@ -32,8 +32,11 @@ const sections = Object.entries(DATA.sections).filter(([, s]) => s.enabled).sort
     </section>}
     {key === "education" && <section id="education" class="flex flex-col gap-6">
       <h2 class="text-xl font-bold">{p.labels.education}</h2>
-      {p.education.map(entry => <a href={entry.href} class="flex gap-3 items-start justify-between hover:underline" target="_blank" rel="noopener noreferrer">
-        <div><h3 class="font-semibold">{entry.school}</h3><p class="text-sm text-muted-foreground">{entry.degree}</p></div>
+      {p.education.map(entry => <a href={entry.href} class="group flex items-center gap-3 justify-between" target="_blank" rel="noopener noreferrer">
+        <div class="flex items-center gap-3 flex-1 min-w-0">
+          {entry.logoUrl && <img src={entry.logoUrl} alt="" width="40" height="40" loading="lazy" class="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border object-contain flex-none" />}
+          <div class="min-w-0"><h3 class="font-semibold group-hover:underline">{entry.school}</h3><p class="text-sm text-muted-foreground">{entry.degree}</p></div>
+        </div>
         <span class="text-xs text-muted-foreground shrink-0">{entry.start} – {entry.end}</span>
       </a>)}
     </section>}
