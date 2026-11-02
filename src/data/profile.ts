@@ -10,20 +10,25 @@ export const personID = absoluteURL("/#person");
 
 export function getProfile(locale: Locale = "en") {
   const zh = locale === "zh";
+  const identityIntro = zh
+    ? `我的中文名是${DATA.chineseName}，英文全名是 ${DATA.name}，也使用 ${DATA.nameVariants.join("、")} 这些姓名写法。我的线上账号名是 ${DATA.username}。`
+    : `My full English name is ${DATA.name}, and my Chinese name is ${DATA.chineseName}. I also go by ${new Intl.ListFormat("en", { style: "long", type: "conjunction" }).format(DATA.nameVariants)}. Online, I use the handle ${DATA.username}.`;
   return {
     name: DATA.name,
-    chineseName: "李叙宁",
+    chineseName: DATA.chineseName,
+    alternateNames: [DATA.chineseName, ...DATA.nameVariants, DATA.username],
+    username: DATA.username,
     headline: zh ? "你好，我是李叙宁 Chris" : "Hi, I'm Chris",
     description: zh
-      ? "我是李叙宁（Chris Xuning Li），多伦多大学三年级学生，主修计算机科学与统计学。关注计算机系统、网络基础设施、自托管与 AI 辅助工作流。"
+      ? "我是李叙宁（Chris Xuning Li / Chris Li），多伦多大学 St. George 校区三年级学生，主修计算机科学与统计学。关注计算机系统、网络基础设施、自托管与 AI 辅助工作流。"
       : DATA.description,
-    summary: zh ? `2024 年 9 月，我从上海来到多伦多，开始在多伦多大学学习，目前攻读统计学与计算机科学双主修。我的主要兴趣是计算机系统、网络基础设施、自托管和家庭实验室（Homelab）技术。
+    summary: identityIntro + "\n\n" + (zh ? `2024 年 9 月，我从上海来到多伦多，开始在多伦多大学学习，目前攻读统计学与计算机科学双主修。我的主要兴趣是计算机系统、网络基础设施、自托管和家庭实验室（Homelab）技术。
 
 我喜欢设计、部署和维护整合软件、硬件、网络与云服务的系统。多年来，我使用过 Linux、Docker、WordPress、Cloudflare、虚拟化技术以及多种自托管平台。
 
 除了传统的软件开发，我也关注系统性思考：理解复杂系统如何运行、信息和资源如何流动，以及如何运用技术解决现实问题。最近，我也在探索 AI 辅助工作流、自动化，以及人工智能与系统设计的交叉领域。
 
-在学业之外，我是一名技术爱好者，喜欢搭建个人基础设施、尝试新技术，并持续学习支撑现代数字世界的系统。` : DATA.summary,
+在学业之外，我是一名技术爱好者，喜欢搭建个人基础设施、尝试新技术，并持续学习支撑现代数字世界的系统。` : DATA.summary),
     location: zh ? "加拿大安大略省多伦多" : DATA.location,
     avatar: DATA.avatarUrl,
     skills: DATA.skills.map(skill => skill.name),
@@ -52,7 +57,7 @@ export function personSchema(locale: Locale = "en") {
   const p = getProfile(locale);
   return {
     "@type": "Person", "@id": personID, name: p.name,
-    alternateName: [p.chineseName, "Xuning Li", "chrislxn"],
+    alternateName: p.alternateNames,
     url: absoluteURL("/"), image: p.avatar, description: p.description,
     sameAs: Object.values(p.links),
     affiliation: { "@type": "CollegeOrUniversity", name: "University of Toronto", url: "https://www.utoronto.ca/" },
