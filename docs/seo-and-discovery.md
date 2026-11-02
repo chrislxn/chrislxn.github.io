@@ -21,9 +21,9 @@
 
 ## 姓名与身份一致性
 
-主姓名使用「李叙宁 / Chris Xuning Li」，其他姓名写法 Xuning Li、Chris Xuning、Chris Li 和账号 chrislxn 在中英文可见介绍中自然说明。`src/data/resume.tsx` 的 `chineseName`、`nameVariants` 与 `username` 为这些信息的统一来源，Person 的 `alternateName`、JSON 和 llms.txt 都从同一份资料生成；中英文 Markdown 使用相同介绍。
+主姓名使用「李叙宁 / Chris Xuning Li」。其他姓名写法 Xuning Li、Chris Xuning、Chris Li 和账号 chrislxn 仅在 SEO 结构化数据及机器资料中关联，不添加到首页可见介绍或 About。`src/data/resume.tsx` 的 `chineseName`、`nameVariants` 与 `username` 为这些信息的统一来源，Person 的 `alternateName`、JSON 和 llms.txt 都从同一份资料生成；中英文 Markdown 的 About 与网页保持相同原文，姓名写法放在独立资料字段中。
 
-学校、St. George 校区、专业以及 GitHub/LinkedIn 链接提供同名人物的区分信息。姓名别名帮助表明内容指向同一个人，不保证任何关键词的收录或排名。
+`description` 用于首页可见介绍，`seoDescription` 专用于页面 head 元数据，避免修改 SEO 时改写主页正文。学校、St. George 校区、专业以及 GitHub/LinkedIn 链接提供同名人物的区分信息。姓名别名帮助表明内容指向同一个人，不保证任何关键词的收录或排名。
 
 ## AI 资料
 

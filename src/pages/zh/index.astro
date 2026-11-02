@@ -5,6 +5,6 @@ import HomeContent from "@/components/HomeContent.astro";
 import { getProfile } from "@/data/profile";
 const profile = getProfile("zh");
 ---
-<Layout absoluteTitle title="李叙宁 Chris Xuning Li — 多伦多大学计算机科学与统计学" description={profile.description} locale="zh" alternates={{ en: "/", zh: "/zh/" }} markdownPath="/zh/index.md">
+<Layout absoluteTitle title="李叙宁 Chris Xuning Li — 多伦多大学计算机科学与统计学" description={profile.seoDescription} locale="zh" alternates={{ en: "/", zh: "/zh/" }} markdownPath="/zh/index.md">
   <HomeContent locale="zh" />
 </Layout>
