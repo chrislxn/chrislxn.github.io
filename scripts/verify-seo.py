@@ -26,7 +26,10 @@ for path, (lang, text) in pages.items():
     assert canonical == 'https://www.chrisxn.com' + path, canonical
     alternates = {a['hreflang']: a['href'] for a in page.find('link', rel='alternate') if 'hreflang' in a}
     assert alternates == {'en': 'https://www.chrisxn.com/', 'zh-Hans': 'https://www.chrisxn.com/zh/', 'x-default': 'https://www.chrisxn.com/'}
-    assert {a['data-language'] for a in page.find('a') if 'data-language' in a} == {'en', 'zh'}
+    switch = [a for a in page.find('a') if 'data-language' in a]
+    assert len(switch) == 1
+    assert switch[0]['data-language'] == ('zh' if lang == 'en' else 'en')
+    assert switch[0].get('aria-label') and switch[0].get('title')
     for a in page.find('a') + page.find('link'):
         url = a.get('href', '')
         if url.startswith('/') and not url.startswith('//'):
